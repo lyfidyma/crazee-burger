@@ -1,11 +1,22 @@
 import React from 'react'
+import App from '../../../App'
+import { useNavigate, useParams } from 'react-router-dom'
 
-export default function OrderPage() {
+const OrderPage = () => {
+  const navigate = useNavigate()
+  const { username } = useParams()
+  const handleDisconnect = () => {
+    navigate("/")
+  }
+  
   return (
     <div>
-        <h2>Bonjour</h2>
+        <h2>Bonjour {username}</h2>
         <br />
-        <button>Déconnexion</button>
+        <button onClick={handleDisconnect}>Déconnexion</button>
     </div>
   )
 }
+
+export default OrderPage
+
