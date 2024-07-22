@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { theme } from '../../../theme'
 
 export default function Input({value, onChange, Icon, ...extraProps}) {
 
@@ -28,7 +29,7 @@ const InputStyled = styled.div`
         .icon{
             font-size: 15px;
             margin-right: 8px;
-            color: #93a2b1;
+            color: ${theme.colors.greyMedium};
         }
 
         input{
@@ -40,7 +41,7 @@ const InputStyled = styled.div`
 
         &::placeholder{
             background: white;
-            color: lightgray;
+            color: ${theme.colors.greyMedium};
         }
     
 `
