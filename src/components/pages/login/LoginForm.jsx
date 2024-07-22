@@ -8,6 +8,7 @@ import imgBackground from '../../../img/background.jpg'
 import { FaChevronRight } from 'react-icons/fa'
 import { BiSolidChevronRight } from 'react-icons/bi'
 import Input from '../reusable-ui/Input'
+import PrimaryButton from '../reusable-ui/PrimaryButton'
 
 export default function LoginForm() {
     const navigate = useNavigate()
@@ -36,12 +37,9 @@ export default function LoginForm() {
                 Icon={<IoPersonCircleOutline className='icon'/>}
                 required/>
                     
-                <button 
-                    className='button-with-icon' 
-                    type='submit'>
-                    <span>Accédez à mon compte</span>
-                    <BiSolidChevronRight className='icon'/>
-                </button>
+                <PrimaryButton label={"Accéder à mon espace"}
+                Icon={<BiSolidChevronRight className='icon'/>}
+                />
                
             
         
@@ -74,56 +72,6 @@ const LoginFormStyled = styled.form`
         color: white;
         margin: 20px 10px 10px;
         font-size: 36px;
-    }
-
-   
-        .button-with-icon{
-            width: 100%;
-            border: 1px solid red;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            white-space: nowrap;
-            text-decoration: none;
-            line-height: 1;
-
-            padding: 18px 24px;
-            border-radius: 5px;
-            font-size: 15px;
-            font-weight: 700;
-            color: white;
-            background-color: ${theme.colors.primary};
-            border: 1px solid ${theme.colors.primary};
-            
-        
-
-        &:hover:not(:disabled){
-            background-color: white;
-            color: ${theme.colors.primary};
-            border: 1px solid ${theme.colors.primary};
-            transition: all 200ms ease-out;
-        }
-    
-
-        &:active{
-            color: white;
-            background-color: ${theme.colors.primary};
-            border: 1px solid ${theme.colors.primary};
-        }
-
-        &:disabled{
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .icon{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 15px;
-            margin-left: 10px;
-        }
     }
   
 `
