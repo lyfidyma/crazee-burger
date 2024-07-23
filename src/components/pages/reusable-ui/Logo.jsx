@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function Logo() {
+export default function Logo({className}) {
   return (
-    <LogoStyled>
+    <LogoStyled className={className}>
         <h1>CRAZEE</h1>
         <img src='/src/img/logo.png' alt=''/>
         <h1>BURGER</h1>
