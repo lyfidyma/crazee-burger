@@ -1,22 +1,41 @@
 import React from 'react'
 import App from '../../../App'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import styled from 'styled-components'
+import Logo from '../reusable-ui/Logo'
+import Navbar from './Navbar'
+import Main from './Main'
 
 const OrderPage = () => {
-  const navigate = useNavigate()
+ 
   const { username } = useParams()
-  const handleDisconnect = () => {
-    navigate("/")
-  }
+ 
   
   return (
-    <div>
-        <h2>Bonjour {username}</h2>
-        <br />
-        <button onClick={handleDisconnect}>Déconnexion</button>
-    </div>
+    <OrderPageStyled >
+      <div className='container'>
+        <Navbar username={username}/>
+        <Main/>
+      </div>
+    </OrderPageStyled>
+
   )
 }
 
 export default OrderPage
 
+const OrderPageStyled = styled.div`
+  background-color: orange;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container{
+    background-color: red;
+    height: 95vh;
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+  }
+`;
