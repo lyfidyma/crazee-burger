@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import LoginForm from './LoginForm'
-import imgBackground from '../../../img/background.jpg'
+import imgBackground from '/images/background.jpg'
 import styled from 'styled-components'
 import Logo from '../reusable-ui/Logo'
 
