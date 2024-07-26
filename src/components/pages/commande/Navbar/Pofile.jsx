@@ -1,8 +1,9 @@
 import React from 'react'
 import { BsPersonCircle } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import { theme } from '../../../../theme';
 import styled from 'styled-components';
-import { theme } from '../../../theme';
+
 
 export default function Pofile({username}) {
   return (

@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Logo from '../reusable-ui/Logo';
 import NavbarRightSide from './NavbarRightSide';
-import { theme } from '../../../theme';
-import { refreshPage } from '../../../utils/refreshPage'
+import { refreshPage } from '../../../../utils/refreshPage'
+import Logo from '../../reusable-ui/Logo';
+import { theme } from '../../../../theme';
 
 export default function Navbar({username}) {
    
