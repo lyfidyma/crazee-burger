@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import LoginForm from './LoginForm'
-import imgBackground from '../../../img/background.jpg'
+import imgBackground from '/images/background.jpg'
 import styled from 'styled-components'
 import Logo from '../reusable-ui/Logo'
 
@@ -8,7 +8,7 @@ export default function LoginPage() {
     
   return (
     <LoginPageStyled>
-      <Logo/>
+      <Logo className={"logo-login-page"}/>
       <LoginForm/>
     </LoginPageStyled>
   )
@@ -31,12 +31,11 @@ const LoginPageStyled = styled.div`
   bottom: 0;
   /* ::before{
     content: "";
-   
-   
-    
-   
     z-index: -1;
   } */
+    .logo-login-page{
+      transform: scale(2.5);
+    }
 
 `
 
