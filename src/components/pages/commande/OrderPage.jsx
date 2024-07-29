@@ -3,9 +3,9 @@ import App from '../../../App'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Logo from '../reusable-ui/Logo'
-import Navbar from './Navbar'
-import Main from './Main'
 import { theme } from '../../../theme'
+import Navbar from './Navbar/Navbar'
+import Main from './Main/Main'
 
 const OrderPage = () => {
  
