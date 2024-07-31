@@ -30,6 +30,8 @@ const ProfileStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 100px;
+  padding-left: 50px;
+  
   .info{
     text-align: right;
     margin-right: 10px;
