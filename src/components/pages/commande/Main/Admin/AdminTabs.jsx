@@ -1,29 +1,51 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import Tab from '../../../reusable-ui/Tab';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { MdModeEditOutline } from 'react-icons/md';
+import { tabsConfig } from './tabsConfig';
+
 import { theme } from '../../../../../theme';
+import OrderContext from '../../../../../context/OrderContext';
 
-export default function AdminTabs({isCollapsed, setIsCollapsed}) {
+export default function AdminTabs() {
 
-        const handleClick = () => {
-            setIsCollapsed(!isCollapsed)
+
+        // const handleClick = () => {
+        //     setIsCollapsed(!isCollapsed)
+        // }
+
+        // state
+        const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } = useContext(OrderContext)
+        const tabs = tabsConfig
+
+        // comportements
+        const selectTab = (tabSelected) => {
+            setIsCollapsed(false)
+            setCurrentTabSelected(tabSelected)
         }
+        
   return (
     <AdminTabsStyled>
         <Tab 
+            index="chevron"
             label=""
             Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown/>} 
-            onClick={handleClick}
+            onClick={() => setIsCollapsed(!isCollapsed)}
             className={isCollapsed ? "is-active" : ""}
         />
+        {tabs.map((tab) => (
         <Tab 
-            label="Ajouter un produit"
-            Icon={<AiOutlinePlus />} 
-            onClick={handleClick}
-            className={isCollapsed ? "is-active" : ""}
+            key={tab.index}
+            index={tab.index}
+            label={tab.label}
+            Icon={tab.Icon}
+            onClick={() => selectTab(tab.index)}
+            className={currentTabSelected === tab.index ? "is-active" : ""}
         />
+    ))}
+       
     </AdminTabsStyled>
   )
 }
@@ -37,5 +59,9 @@ const AdminTabsStyled = styled.div`
         border-color: ${theme.colors.background_dark};
         color: ${theme.colors.white};
     }
+
+    button {
+    margin-left: 1px;
+  }
   
 `;
