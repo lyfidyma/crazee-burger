@@ -1,28 +1,60 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
 
+const EMPTY_PRODUCT = {
+  id: "",
+  title: "",
+  imageSource: "",
+  price: 0,
+}
+
 export default function Addform() {
+
+  //state
   const { handleAdd } = useContext(OrderContext)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
-  const newProduct = {
-    id: new Date().getTime(),
-    title: "Nouveau produit",
-    imageSource: "https://gsrextraa.com/files/articles/80/cover-669f60bdace5d.jpg",
-    price: 2.5,
-  }
-
+  //comportements
   const handleSubmit = (event) =>{
     event.preventDefault()
-    handleAdd(newProduct)
+    const newProductToAdd = {
+      ...newProduct,
+      id: new Date().getTime(),
+    }
+    handleAdd(newProductToAdd)
   }
+
+  const handleChange = (event) => {
+    const newValue = event.target.value
+    const name = event.target.name
+    setNewProduct({ ...newProduct, [name]: newValue })
+
+  }
+
+  //affichage
   return (
     <AddFormStyled onSubmit={handleSubmit}>
       <div className='image-preview'>ImagePreview</div>
       <div className='input-fields'>
-         <input type="text" placeholder='Nom du produit'/>
-         <input type="text" placeholder='Image url'/>
-         <input type="text" placeholder='Prix' />
+         <input 
+            name="title"
+            value={newProduct.title}
+            type="text" 
+            placeholder='Nom du produit'
+            onChange={handleChange}/>
+         <input
+            name="imageSource"
+            value={newProduct.imageSource} 
+            type="text" 
+            placeholder='Image url'
+            onChange={handleChange}/>
+         <input 
+          name='price'
+          value={newProduct.price}
+          type="text" 
+          placeholder='Prix' 
+          onChange={handleChange}/>
       </div>
       <button className='submit-button'>Submit button</button>
     </AddFormStyled>
