@@ -20,15 +20,14 @@ export default function Addform() {
     event.preventDefault()
     const newProductToAdd = {
       ...newProduct,
-      id: new Date().getTime(),
+      id: crypto.randomUUID(),
     }
     handleAdd(newProductToAdd)
   }
 
   const handleChange = (event) => {
-    const newValue = event.target.value
-    const name = event.target.name
-    setNewProduct({ ...newProduct, [name]: newValue })
+    const { name, value } = event.target
+    setNewProduct({ ...newProduct, [name]: value })
 
   }
 
@@ -51,7 +50,7 @@ export default function Addform() {
             onChange={handleChange}/>
          <input 
           name='price'
-          value={newProduct.price}
+          value={newProduct.price ? newProduct.price : ""}
           type="text" 
           placeholder='Prix' 
           onChange={handleChange}/>
