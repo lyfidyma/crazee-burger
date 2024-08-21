@@ -11,11 +11,20 @@ const DEFAULT_IMAGE = "/images/coming-soon.png"
 export default function Menu() {
 
   //state
-    const { menu, isModeAdmin, handleDelete } = useContext(OrderContext)
+    const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
   //comportements
   const handleClick=() => {
     alert('test')
   }
+
+  //affichage
+  if(menu.length === 0)
+    return (
+      <div>
+        <span>Pas de produit</span>
+        <button onClick={resetMenu}>Générer un nouveau produit</button>
+      </div>
+    )
 
   return (
     <MenuStyled className='menu'>

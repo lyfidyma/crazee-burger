@@ -36,6 +36,11 @@ const OrderPage = () => {
     setMenu(menuUpdated)
   }
 
+
+  const resetMenu = () => {
+    setMenu(fakeMenu.SMALL)
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -44,6 +49,7 @@ const OrderPage = () => {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
+    resetMenu,
     handleAdd,
     handleDelete
   }
