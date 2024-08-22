@@ -50,7 +50,7 @@ export default function Addform() {
         {newProduct.imageSource ? (
           <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
-          <div className='empty-message'>Aucune image</div>
+          <div className='empty-image'>Aucune image</div>
         )}
       </div>
       <div className='input-fields'>
@@ -102,9 +102,7 @@ const AddFormStyled = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid ${theme.colors.greyLight}; */
-
-
+    
     img{
       width: 100%;
       height: 100%;
@@ -118,7 +116,7 @@ const AddFormStyled = styled.form`
       justify-content: center;
       align-items: center;
       border: 1px solid ${theme.colors.greyLight};
-      line-height: 1.5;
+      line-height: 2.5;
       color: ${theme.colors.greySemiDark};
       border-radius: ${theme.borderRadius.round};
 
