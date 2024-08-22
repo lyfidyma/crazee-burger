@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { theme } from '../../../theme'
 
-export default function Input({value, onChange, Icon, ...extraProps}) {
+export default function Input({value, onChange, Icon, className, ...extraProps}) {
 
     
   return (
-    <InputStyled>
-            {Icon && Icon}
+    <InputStyled className={className}>
+            <div className="icon">{Icon && Icon}</div>
                 <input 
                     type='text'
                     value={value}
@@ -19,17 +19,19 @@ export default function Input({value, onChange, Icon, ...extraProps}) {
 }
 
 const InputStyled = styled.div`
-        background-color: #ffff;
+        background-color: ${theme.colors.white};
         border-radius: 5px;
         display: flex;
         align-items: center;
         padding: 18px 24px;
-        margin: 18px 0;
 
         .icon{
-            font-size: 15px;
-            margin-right: 8px;
-            color: ${theme.colors.greyMedium};
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: ${theme.fonts.SM};
+          margin: 0 8px 0 10px;
+          color: ${theme.colors.greySemiDark};
         }
 
         input{

@@ -7,6 +7,7 @@ import { IoChevronForward, IoPersonCircleOutline } from 'react-icons/io5'
 import { BiSolidChevronRight } from 'react-icons/bi'
 import Input from '../reusable-ui/Input'
 import PrimaryButton from '../reusable-ui/PrimaryButton'
+import { BsPersonCircle } from 'react-icons/bs'
 
 export default function LoginForm() {
     const navigate = useNavigate()
@@ -28,16 +29,19 @@ export default function LoginForm() {
                 <hr/>
                 <h2>Connectez-vous</h2>
             </div>
-            <Input 
-                value={inputValue} 
-                onChange={handleChange}
-                placeholder={"Entrer votre prénom"}
-                Icon={<IoPersonCircleOutline className='icon'/>}
-                required/>
-                    
-                <PrimaryButton label={"Accéder à mon espace"}
-                Icon={<BiSolidChevronRight className='icon'/>}
-                />
+            <div>
+                <Input
+                    value={inputValue}
+                    onChange={handleChange}
+                    placeholder={"Entrer votre prénom"}
+                    Icon={<BsPersonCircle />}
+                    className="input-login"
+                    required/>
+                
+                    <PrimaryButton label={"Accéder à mon espace"}
+                    Icon={<IoChevronForward />}
+                    />
+            </div>
                
             
         
@@ -52,24 +56,28 @@ const LoginFormStyled = styled.form`
     max-width: 500px;
     min-width: 400px;
     margin: 0px auto;
-    padding: 2.5rem 2rem;
-    border-radius: 5px;
+    padding: 40px ${theme.spacing.lg};
+    border-radius: ${theme.borderRadius.round};
     font-family: "Amatic SC", cursive;
     
-    
-    
-    h1{
-        color: white;
-        font-size: 40px;
-    }
     hr{
         border: 1.5px solid #f56a2c;
-        margin-bottom: 40px;
+        margin-bottom: ${theme.gridUnit * 5}px;
     }
+    
+    h1{
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.P5};
+    }
+    
     h2{
-        color: white;
         margin: 20px 10px 10px;
-        font-size: 36px;
+        color: ${theme.colors.white};
+        font-size: ${theme.fonts.P4};
+    }
+
+    .input-login {
+        margin: 18px 0;
     }
   
 `
