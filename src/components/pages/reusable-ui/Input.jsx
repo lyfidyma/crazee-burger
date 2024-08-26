@@ -45,11 +45,21 @@ const InputStyled = styled.div`
             /* background: white; */
             color: ${theme.colors.greyMedium};
         }
-    ${(props) => {
-      if(props.version === "normal") return extraStyleNormal
-      if(props.version === "minimalist") return extraStyleMinimalist
-    }}
-`
+
+        /* ------------ Ces 3 écritures sont similaires ------------------- */
+
+          /* ${(props) => {
+            if(props.version === "normal") return extraStyleNormal
+            if(props.version === "minimalist") return extraStyleMinimalist
+          }} */
+          /* ${(props) => extraStyle[props.version]} */
+
+          ${({version}) => extraStyle[version]}
+
+        /* ---------------------------------------------------------------- */
+
+     `
+     
 const extraStyleNormal = css`
   background-color: ${theme.colors.white};
   padding: 18px 28px;
@@ -78,3 +88,8 @@ const extraStyleMinimalist = css `
     }
   }
 `
+
+const extraStyle = {
+  normal: extraStyleNormal,
+  minimalist: extraStyleMinimalist,
+}
