@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import PrimaryButton from './PrimaryButton'
+import Button from './Button'
 import { theme } from '../../../theme'
 import { TiDelete } from 'react-icons/ti'
 
@@ -18,7 +18,7 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
         <div className="description">
             <div className="left-description">{ leftDescription }</div>
             <div className="right-description">
-                <PrimaryButton className='primary-button' label={"Ajouter"}/>
+                <Button className='primary-button' label={"Ajouter"}/>
             </div>
         </div>
     </div>
