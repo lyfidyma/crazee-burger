@@ -8,6 +8,7 @@ import Navbar from './Navbar/Navbar'
 import Main from './Main/Main'
 import OrderContext from '../../../context/OrderContext.jsx'
 import { fakeMenu } from '../../../fakeData/fakeMenu.js'
+import { EMPTY_PRODUCT } from './Main/Admin/AdminPanel/AddForm.jsx'
 
 const OrderPage = () => {
   //state
@@ -15,6 +16,8 @@ const OrderPage = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
 
   //comportements
   const handleAdd = (newProduct) => {
@@ -51,7 +54,9 @@ const OrderPage = () => {
     menu,
     resetMenu,
     handleAdd,
-    handleDelete
+    handleDelete,
+    newProduct, 
+    setNewProduct
   }
  
  //affichage
