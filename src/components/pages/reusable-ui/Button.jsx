@@ -12,10 +12,10 @@ export default function Button({label, Icon, className, version="normal", onClic
 }
 
 const ButtonStyled = styled.button`
-    ${(props) => props.version === "normal" && extraStylePrimary};
-    ${(props) => props.version === "success" && extraStyleSuccess};
-
-    ${({version}) => extraStyle[version]};
+   // ${(props) => props.version === "normal" && extraStylePrimary};
+    //${(props) => props.version === "success" && extraStyleSuccess};
+//Le code ci-dessus est remplacé par celui-ci
+    ${({version}) => extraStyle[version]}
     
 `
 
@@ -90,6 +90,6 @@ const extraStyleSuccess = css`
 `
 
 const extraStyle = {
-    primary: extraStylePrimary,
+    normal: extraStylePrimary,
     success: extraStyleSuccess
 }
