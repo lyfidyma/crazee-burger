@@ -22,7 +22,7 @@ export default function Menu() {
   //affichage
   if(menu.length === 0){
     if(!isModeAdmin) return <EmptyMenuClient/>
-    return <EmptyMenuAdmin resetMenu={resetMenu}/>
+    return <EmptyMenuAdmin onReset={resetMenu}/>
   }
     
   return (
