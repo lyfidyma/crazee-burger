@@ -40,6 +40,9 @@ const colors = {
     P4: "36px",
     P5: "48px",
     P6: "60px",
+    family: {
+      stylish: '"Amatic SC", cursive',
+    }
   }
   const gridUnit = 8
   const borderRadius = {
