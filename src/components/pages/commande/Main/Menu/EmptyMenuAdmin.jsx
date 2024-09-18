@@ -42,5 +42,6 @@ const EmptyMenuAdminStyled = styled.div`
     margin-top: 30px;
     font-size: ${theme.fonts.XS};
     width: auto;
+    cursor: pointer;
   }
 `

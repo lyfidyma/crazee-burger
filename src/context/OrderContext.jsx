@@ -13,4 +13,6 @@ export default createContext({
     handleAdd: () => {},
     newProduct: [], 
     setNewProduct: () => {},
+    productSelected: {},
+    setProductSelected: () => {}
 })

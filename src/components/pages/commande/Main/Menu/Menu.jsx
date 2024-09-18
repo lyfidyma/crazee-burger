@@ -11,18 +11,21 @@ import EmptyMenuClient from './EmptyMenuClient';
 const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Menu() {
+    const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext)
 
-  //state
-    const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+    //state
   //comportements
-  const handleClick=() => {
-    alert('test')
-  }
 
   //affichage
   if(menu.length === 0){
     if(!isModeAdmin) return <EmptyMenuClient/>
     return <EmptyMenuAdmin onReset={resetMenu}/>
+  }
+
+  const handleClick = (idProductClicked) => {
+    const productSelected = menu.find((product) => product.id === idProductClicked)
+    setProductSelected(productSelected)
+
   }
     
   return (
@@ -36,6 +39,7 @@ export default function Menu() {
                 leftDescription={formatPrice(price)}
                 hasDeleteButton={isModeAdmin}
                 onDelete={()=> handleDelete(id)}
+                onClick={() => handleClick(id)}
                 />
                 // <Card key={product.id} {...product}/>
         )
