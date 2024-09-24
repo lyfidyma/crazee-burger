@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components';
-import { fakeMenu } from '../../../../../fakeData/fakeMenu'
 import { theme } from '../../../../../theme';
 import Card from '../../../reusable-ui/Card'
 import { formatPrice } from '../../../../../utils/maths'
