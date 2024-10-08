@@ -36,8 +36,7 @@ const OrderPage = () => {
     const menuCopy = deepClone(menu)
     //2. manip de la copie du state
     const menuUpdated = menuCopy.filter((product)=> product.id !== idOfProductToDelete)
-    console.log(menuUpdated)
-    //. update du state
+    //3. update du state
     setMenu(menuUpdated)
   }
 
