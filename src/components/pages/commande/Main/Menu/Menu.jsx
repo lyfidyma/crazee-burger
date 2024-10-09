@@ -40,6 +40,7 @@ export default function Menu() {
                 onDelete={()=> handleDelete(id)}
                 onClick={() => handleClick(id)}
                 isHoverable={isModeAdmin}
+                isSelected={false}
                 />
                 // <Card key={product.id} {...product}/>
         )

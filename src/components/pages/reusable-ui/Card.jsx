@@ -11,11 +11,12 @@ export default function Card({
     hasDeleteButton, 
     onDelete, 
     onClick,
-    isHoverable
+    isHoverable,
+    isSelected
 }) {
   return (
     <CardStyled className='produit' onClick={onClick} $isHoverable={isHoverable}>
-        <div className='card'>
+        <div className='card' style={isSelected ? {background: "orange"} : {}}>
             {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
                 <TiDelete className='icon'/>
             </button>)}
