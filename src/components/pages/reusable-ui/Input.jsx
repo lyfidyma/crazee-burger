@@ -1,23 +1,27 @@
-import React, { version } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import { theme } from '../../../theme'
 
-export default function Input({value, onChange, Icon, className, version="normal", ...extraProps}) {
+const Input = React.forwardRef(
+  ({value, onChange, Icon, className, version="normal", ...extraProps}, ref) => {
 
     
   return (
     <InputStyled className={className} version={version}>
             <div className="icon">{Icon && Icon}</div>
-                <input 
+                <input
+                    ref={ref} 
                     type='text'
                     value={value}
                     onChange={onChange} 
                     {...extraProps}
                   />
             </InputStyled>
-  )
-}
+    )
+  }
+)
 
+export default Input
 const InputStyled = styled.div`
         background-color: ${theme.colors.white};
         border-radius: 5px;

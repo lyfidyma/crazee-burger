@@ -7,7 +7,7 @@ import ImagePreview from './ImagePreview'
 
 export default function EditForm() {
   //state
-  const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
 
   const inputTexts = getInputTextsConfig(productSelected)
 
@@ -40,6 +40,7 @@ const handleChange = (event) => {
               {...input}
               onChange = {handleChange}
               version = "minimalist"
+              ref={input.name === "title" ? titleEditRef : null}
             />
          ))}
       </div>

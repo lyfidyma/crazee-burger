@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import App from '../../../App'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
@@ -19,7 +19,7 @@ const OrderPage = () => {
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-
+  const titleEditRef = useRef()
 
   //comportements
   const handleAdd = (newProduct) => {
@@ -77,7 +77,8 @@ const OrderPage = () => {
     newProduct, 
     setNewProduct,
     productSelected,
-    setProductSelected
+    setProductSelected,
+    titleEditRef
   }
  
  //affichage
