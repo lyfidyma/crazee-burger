@@ -5,6 +5,7 @@ import { getInputTextsConfig } from './inputTextConfig'
 import styled from 'styled-components'
 import ImagePreview from './ImagePreview'
 import { theme } from '../../../../../../theme'
+import EditInfoMessage from './EditInfoMessage'
 
 export default function EditForm() {
   //state
@@ -45,12 +46,7 @@ const handleChange = (event) => {
             />
          ))}
       </div>
-      <div className="submit">
-        <span className='sentence'>
-          Cliquer sur un produit du menu pour le modifier{" "}
-          <span className='live-update'>en temps réel</span>
-        </span>
-          </div>
+      <div className="submit"><EditInfoMessage/></div>
     </EditFormStyled>
   )
 }
@@ -78,14 +74,6 @@ const EditFormStyled = styled.form`
     display: flex;
     align-items: center;
     position: relative;
-    top: 3px;
-
-    .sentence{
-      color: ${theme.colors.primary};
-      font-size: ${theme.fonts.SM};
-      .live-update{
-        text-decoration: underline;
-      }
-    }
+    top: 3px;    
   }
 `;
