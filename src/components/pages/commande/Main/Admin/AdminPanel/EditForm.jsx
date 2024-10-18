@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import ImagePreview from './ImagePreview'
 import { theme } from '../../../../../../theme'
 import EditInfoMessage from './EditInfoMessage'
+import Form from './Form'
 
 export default function EditForm() {
   //state
@@ -28,26 +29,9 @@ const handleChange = (event) => {
 
 //affichage
   return (
-    <EditFormStyled>
-     <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title}/>
-      <div className='input-fields'>
-         {inputTexts.map((input) =>(
-            <Input
-              key = {input.id}
-              // name = {input.name}
-              // value = {input.value}
-              // placeholder = {input.placeholder}
-              // Icon = {input.Icon}
-              //Code ci-dessus remplacer par
-              {...input}
-              onChange = {handleChange}
-              version = "minimalist"
-              ref={input.name === "title" ? titleEditRef : null}
-            />
-         ))}
-      </div>
-      <div className="submit"><EditInfoMessage/></div>
-    </EditFormStyled>
+    <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+      <EditInfoMessage/>
+    </Form>
   )
 }
 

@@ -6,7 +6,7 @@ import Button from '../../../../reusable-ui/Button';
 import styled from 'styled-components';
 import { getInputTextsConfig } from './inputTextConfig';
 
-export default function Form({product, onSubmit, onChange, isSubmitted}) {
+const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) => {
 
     //state 
     //comportements
@@ -28,21 +28,16 @@ export default function Form({product, onSubmit, onChange, isSubmitted}) {
              {...input}
              onChange = {onChange}
              version = "minimalist"
+             ref={ref && input.name === "title" ? ref : null}
            />
         ))}
      </div>
-     <div className="submit">
-       <Button 
-         className="submit-button" 
-         label={"Ajouter un nouveau produit au menu"}
-         version="success"
-         />
-       {isSubmitted && <SubmitMessage/>}
-     </div>
+     <div className="form-footer">{children}</div>
    </FormStyled>
   )
 }
-
+)
+export default Form
 
 const FormStyled = styled.form`
   display: grid;
@@ -60,18 +55,13 @@ const FormStyled = styled.form`
 
   }
 
-  .submit{
+  .form-footer{
     /* background: green; */
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
     position: relative;
     top: 3px;
-
-    .submit-button{
-      /* width: 50%; */
-      height: 100%;
-    }
   }
 `;
 
