@@ -3,8 +3,7 @@ import OrderContext from '../../../../../../context/OrderContext.jsx';
 
 import { EMPTY_PRODUCT } from '../../../../../../enums/product.jsx';
 import Form from './Form.jsx'
-import Button from '../../../../reusable-ui/Button.jsx';
-import SubmitMessage from './SubmitMessage.jsx';
+import SubmitButton from './SubmitButton.jsx';
 
 export default function Addform() {
 
@@ -46,12 +45,7 @@ export default function Addform() {
         onChange={handleChange}
         isSubmitted={isSubmitted}
       >
-        <Button 
-         className="submit-button" 
-         label={"Ajouter un nouveau produit au menu"}
-         version="success"
-         />
-       {isSubmitted && <SubmitMessage/>}
+        <SubmitButton isSubmitted={isSubmitted}/>
 
       </Form>
 
