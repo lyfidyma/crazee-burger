@@ -4,8 +4,7 @@ import Tab from '../../../reusable-ui/Tab';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { MdModeEditOutline } from 'react-icons/md';
-import { tabsConfig } from './tabsConfig';
-
+import { getTabsConfig } from './tabsConfig';
 import { theme } from '../../../../../theme';
 import OrderContext from '../../../../../context/OrderContext';
 
@@ -18,13 +17,15 @@ export default function AdminTabs() {
 
         // state
         const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } = useContext(OrderContext)
-        const tabs = tabsConfig
+        
 
         // comportements
         const selectTab = (tabSelected) => {
             setIsCollapsed(false)
             setCurrentTabSelected(tabSelected)
         }
+
+        const tabs = getTabsConfig()
         
   return (
     <AdminTabsStyled>
