@@ -31,5 +31,6 @@ const MainStyled = styled.div`
     //grid-template-columns: 1fr;
     //A activer lorsque le basket est actif ou ajouter 25% à la ligne ci-dessus
     grid-template-columns: 25% 1fr;
+    overflow: hidden;
 
 `
