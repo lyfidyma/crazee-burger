@@ -48,7 +48,6 @@ export default function Menu() {
      const handleAddButton = (event, idProductToAdd) => {
       event.stopPropagation()
       const productToAdd = find(idProductToAdd, menu)
-      console.log("productToAdd", productToAdd)
       handleAddToBasket(productToAdd)
      }
 
