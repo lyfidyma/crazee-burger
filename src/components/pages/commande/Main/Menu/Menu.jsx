@@ -8,6 +8,7 @@ import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { checkIfProductIsClicked } from './helper';
 import { EMPTY_PRODUCT, DEFAULT_IMAGE } from '../../../../../enums/product';
+import { find } from '../../../../../utils/array';
 
 
 export default function Menu() {
@@ -21,6 +22,7 @@ export default function Menu() {
       setIsCollapsed,
       setCurrentTabSelected,
       titleEditRef,
+      handleAddToBasket,
     } = useContext(OrderContext)
     //state
 
@@ -30,7 +32,7 @@ export default function Menu() {
 
       await setIsCollapsed(false)
       await setCurrentTabSelected("edit")
-      const productClickedOn = menu.find((product) => product.id === idProductClicked)
+      const productClickedOn = find(idProductClicked, menu)
       await setProductSelected(productClickedOn)
       titleEditRef.current.focus()
   
@@ -41,6 +43,13 @@ export default function Menu() {
       handleDelete(idProductToDelete)
       idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
       titleEditRef.current.focus()
+     }
+
+     const handleAddButton = (event, idProductToAdd) => {
+      event.stopPropagation()
+      const productToAdd = find(idProductToAdd, menu)
+      console.log("productToAdd", productToAdd)
+      handleAddToBasket(productToAdd)
      }
 
   //affichage
@@ -64,6 +73,7 @@ export default function Menu() {
                 onClick={() => handleClick(id)}
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                onAdd={(event) => handleAddButton(event, id )}
                 />
                 // <Card key={product.id} {...product}/>
         )
