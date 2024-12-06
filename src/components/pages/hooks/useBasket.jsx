@@ -21,14 +21,23 @@ export const useBasket = () => {
             }
 
             const basketUpdated = [newBasketProduct, ...basketCopy]
-            
+            // Update du state
             setBasket(basketUpdated)
         //return
+        }else {
+          //2eme cas : le produit est déjà dans le state
+            const indexOfBasketProductToIncrement = basket.findIndex(
+                (basketProduct) => basketProduct.id === productToAdd.id 
+            )
+            basketCopy[indexOfBasketProductToIncrement].quantity += 1
+    
+         // Update du state
+         setBasket(basketCopy)
+
         }
 
 
-        //2eme cas : le produit est déjà dans le state
-         //3. Update du state
+      
      }
     return { basket, handleAddToBasket }
  }
