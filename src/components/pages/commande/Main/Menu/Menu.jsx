@@ -7,9 +7,8 @@ import OrderContext from '../../../../../context/OrderContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { checkIfProductIsClicked } from './helper';
-import { EMPTY_PRODUCT } from '../../../../../enums/product';
+import { EMPTY_PRODUCT, DEFAULT_IMAGE } from '../../../../../enums/product';
 
-const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Menu() {
     const { 
