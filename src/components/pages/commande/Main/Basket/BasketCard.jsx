@@ -127,7 +127,7 @@ const BasketCardStyled = styled.div`
   }
 
   /* hover de la card */
-  :hover {
+  &:hover {
     .delete-button {
       /* border: 1px solid red; */
       border: none;
@@ -153,15 +153,13 @@ const BasketCardStyled = styled.div`
       }
 
       /* behaviour on delete-button hover */
-      :hover {
-        .icon {
-          color: ${theme.colors.dark};
-        }
-        :active {
+      &:hover {
+        text-decoration: underline;
+        
           .icon {
-            color: ${theme.colors.white};
+            color: ${theme.colors.dark};
           }
-        }
+        
       }
     }
   }
