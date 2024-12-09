@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { fakeBasket } from "../../../fakeData/fakeBasket"
-import { deepClone, find } from "../../../utils/array"
+import { deepClone, find, findIndex } from "../../../utils/array"
 
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.SMALL)
@@ -15,29 +15,34 @@ export const useBasket = () => {
         //2. Manip de la copie du state
         //1er cas : le produit n'est pas déjà dans le state
         if(!isProductAlreadyInBasket) {
-            const newBasketProduct = {
-                ...productToAdd,
-                quantity: 1,
-            }
-
-            const basketUpdated = [newBasketProduct, ...basketCopy]
-            // Update du state
-            setBasket(basketUpdated)
-        //return
-        }else {
+            createNewProductInBasket(productToAdd, basketCopy, setBasket)
+            return
+        }
           //2eme cas : le produit est déjà dans le state
-            const indexOfBasketProductToIncrement = basket.findIndex(
-                (basketProduct) => basketProduct.id === productToAdd.id 
-            )
-            basketCopy[indexOfBasketProductToIncrement].quantity += 1
-    
-         // Update du state
-         setBasket(basketCopy)
+            incrementProductAlreadyInBasket(productToAdd, basketCopy)      
 
+
+       
+     }
+
+     const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+        const indexOfBasketProductToIncrement = findIndex(productToAdd.id, basketCopy)
+        basketCopy[indexOfBasketProductToIncrement].quantity += 1
+
+        // Update du state
+        setBasket(basketCopy)
+    }
+
+    const createNewProductInBasket = (productToAdd, basketCopy, setBasket) => {
+        const newBasketProduct = {
+            ...productToAdd,
+            quantity: 1,
         }
 
+        const basketUpdated = [newBasketProduct, ...basketCopy]
+        // Update du state
+        setBasket(basketUpdated)
+    }
 
-      
-     }
     return { basket, handleAddToBasket }
  }
