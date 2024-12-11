@@ -7,9 +7,9 @@ import OrderContext from '../../../../../context/OrderContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { checkIfProductIsClicked } from './helper';
-import { EMPTY_PRODUCT } from '../../../../../enums/product';
+import { EMPTY_PRODUCT, DEFAULT_IMAGE } from '../../../../../enums/product';
+import { find } from '../../../../../utils/array';
 
-const DEFAULT_IMAGE = "/images/coming-soon.png"
 
 export default function Menu() {
     const { 
@@ -22,6 +22,8 @@ export default function Menu() {
       setIsCollapsed,
       setCurrentTabSelected,
       titleEditRef,
+      handleAddToBasket,
+      handleDeleteBasketProduct
     } = useContext(OrderContext)
     //state
 
@@ -31,7 +33,7 @@ export default function Menu() {
 
       await setIsCollapsed(false)
       await setCurrentTabSelected("edit")
-      const productClickedOn = menu.find((product) => product.id === idProductClicked)
+      const productClickedOn = find(idProductClicked, menu)
       await setProductSelected(productClickedOn)
       titleEditRef.current.focus()
   
@@ -40,8 +42,15 @@ export default function Menu() {
     const handleCardDelete = (event, idProductToDelete) => { 
       event.stopPropagation()
       handleDelete(idProductToDelete)
+      handleDeleteBasketProduct(idProductToDelete)
       idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
       titleEditRef.current.focus()
+     }
+
+     const handleAddButton = (event, idProductToAdd) => {
+      event.stopPropagation()
+      const productToAdd = find(idProductToAdd, menu)
+      handleAddToBasket(productToAdd)
      }
 
   //affichage
@@ -65,6 +74,7 @@ export default function Menu() {
                 onClick={() => handleClick(id)}
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                onAdd={(event) => handleAddButton(event, id )}
                 />
                 // <Card key={product.id} {...product}/>
         )

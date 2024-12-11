@@ -12,7 +12,8 @@ export default function Card({
     onDelete, 
     onClick,
     isHoverable,
-    isSelected
+    isSelected,
+    onAdd
 }) {
   return (
     <CardStyled 
@@ -36,7 +37,7 @@ export default function Card({
                             <Button 
                                 className='primary-button' 
                                 label={"Ajouter"}
-                                onClick={(event) => event.stopPropagation()}
+                                onClick={onAdd}
                             />
                         </div>
                     </div>
