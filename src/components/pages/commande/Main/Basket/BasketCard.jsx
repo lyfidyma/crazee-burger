@@ -154,10 +154,14 @@ const BasketCardStyled = styled.div`
 
       /* behaviour on delete-button hover */
       &:hover {
-        text-decoration: underline;
-        
+        text-decoration: underline; 
           .icon {
             color: ${theme.colors.dark};
+          }
+          &:active{
+            .icon {
+            color: ${theme.colors.white};
+          }
           }
         
       }
